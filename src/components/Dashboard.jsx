@@ -5,19 +5,34 @@ const Dashboard = props => {
   const [strikeCount, newStrikeCount] = useState(0);
   // const [hitCount, newHitCount] = useState(0);
   console.log(ballCount, strikeCount);
+  const handleStrikeClick = () => {
+    if (strikeCount === 3) {
+      return newStrikeCount(0);
+    } else {
+      return newStrikeCount(strikeCount + 1);
+    }
+  };
+  const handleBallClick = () => {
+    if (ballCount === 4) {
+      return newBallCount(0);
+    } else {
+      return newBallCount(ballCount + 1);
+    }
+  };
+  const handleHitClick = () => {
+    return newBallCount(0), newStrikeCount(0);
+  };
   return (
     <>
       <Display strike={strikeCount} ball={ballCount} />
       <div className="Dashboard-container">
-        <button
-          name="strikeCount"
-          onClick={() => newStrikeCount(strikeCount + 1)}
-        >
+        <button name="strikeCount" onClick={handleStrikeClick}>
           Strike
         </button>
-        <button name="ballCount" onClick={() => newBallCount(ballCount + 1)}>
+        <button name="ballCount" onClick={handleBallClick}>
           Ball
         </button>
+        <button onClick={handleHitClick}>Hit</button>
       </div>
     </>
   );
