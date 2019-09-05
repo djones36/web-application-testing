@@ -19,6 +19,10 @@ const Dashboard = props => {
       return newBallCount(ballCount + 1);
     }
   };
+  const handleFoulClick = () => {
+    if (strikeCount != 2) return newStrikeCount(strikeCount + 1);
+    else return strikeCount;
+  };
   const handleHitClick = () => {
     return newBallCount(0), newStrikeCount(0);
   };
@@ -33,6 +37,7 @@ const Dashboard = props => {
           Ball
         </button>
         <button onClick={handleHitClick}>Hit</button>
+        <button onClick={handleFoulClick}>Foul</button>
       </div>
     </>
   );
